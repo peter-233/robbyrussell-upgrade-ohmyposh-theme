@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": true
+          },
+          "style": "plain",
+          "template": "({{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }}{{ end }}) ",
+          "type": "python"
+        },
+        {
+          "foreground": "#62ED8B",
+          "foreground_templates": [
+            "{{ if .Error }}#e91e63{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "\u279c",
+          "type": "status"
+        },
+        {
+          "foreground": "#66c1d1",
+          "properties": {
+            "style": "folder"
+          },
+          "style": "plain",
+          "template": "  {{ .Path }}",
+          "type": "path"
+        },
+        {
+          "foreground": "#c75342",
+          "properties": {
+            "branch_icon": ""
+          },
+          "style": "plain",
+          "template": " <#5b3eed>git:(</>{{ .HEAD }}<#5b3eed>)</>",
+          "type": "git"
+        },
+        {
+          "type": "git",
+          "properties": {
+            "fetch_status": true
+          },
+          "style": "plain",
+          "foreground": "#b7ba54",
+          "template": "{{ if or (.Working.Changed) (.Staging.Changed) }} \u2718{{ end }}"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 3
+}
